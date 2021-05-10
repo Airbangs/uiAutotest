@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">-->
+<suite verbose="2" name="应用监控webui自动化测试" parallel="tests" thread-count="1" preserve-order="true">
+    <!--<listeners >-->
+        <!--<listener class-name="org.uncommons.reportng.HTMLReporter"/>-->
+        <!--<listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>-->
+        <!--<listener class-name="org.safe.lyg.utils.TestngListener"/>-->
+        <!--&lt;!&ndash;<listener class-name="org.safe.webui.utils.RetryListener"/>&ndash;&gt;-->
+    <!--</listeners>-->
+
+    <test name="SurveyTest" preserve-order="true">
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="LoginTestcase" />
+            <methods>
+            <include name="loginSuc" />
+            <include name="loginWithWrongUsername" />
+            <include name="loginWithWrongPassword" />
+            <include name="loginWithoutUsername" />
+            <include name="loginWithoutPassword" />
+            </methods>
+        </classes>
+    </test>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--&lt;!&ndash; preserve-order="true"配置节点classes下的class顺序执行&ndash;&gt;-->
+    <!--<test verbose="2" name="登录->单位管理->系统管理->登出应用监控" preserve-order="true">-->
+        <!--&lt;!&ndash;add company&ndash;&gt;-->
+        <!--<parameter name="companyName" value="肖战123_WEBUI" />-->
+        <!--<parameter name="contact" value="肖战100" />-->
+        <!--<parameter name="phone" value="+86-13789098909" />-->
+        <!--<parameter name="email" value="xz183@gcexe.com" />-->
+        <!--<parameter name="companyAddr" value="苏州中心" />-->
+        <!--&lt;!&ndash;add site&ndash;&gt;-->
+        <!--<parameter name="siteName" value="小赞家的系统123_webui" />-->
+        <!--<parameter name="siteDomain" value="xiaozhan_xz.com" />-->
+        <!--<parameter name="sitecontact" value="小赞HOME" />-->
+        <!--<parameter name="sitephone" value="0512-12345678" />-->
+        <!--<parameter name="siteemail" value="xiaozhan_xz@gcexe.com" />-->
+
+        <!--<classes>-->
+            <!--<class name="LoginTest">-->
+            <!--</class>-->
+            <!--<class name="CompanyManageTest">-->
+                <!--<methods>-->
+                    <!--<include name="test1_CreateCompany" />-->
+                    <!--<include name="test2_DelSingleOrg" />-->
+                <!--</methods>-->
+            <!--</class>-->
+
+            <!--<class name="SystemManageTest">-->
+                <!--<methods>-->
+                    <!--<include name="test1_addSys" />-->
+                    <!--<include name="test2_delSys" />-->
+                    <!--<include name="test3_addSysMulti" />-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
+
+    <!--<test verbose="2" name="登录->工作台操作->登出应用监控" preserve-order="true">-->
+        <!--<classes>-->
+            <!--<class name="LoginTest">-->
+            <!--</class>-->
+            <!--<class name="AuditCenterTest">-->
+            <!--</class>-->
+            <!--<class name="LogoutTest">-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
+
+
+
+</suite>

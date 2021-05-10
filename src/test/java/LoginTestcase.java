@@ -39,4 +39,64 @@ public class LoginTestcase extends BaseTestcase {
         System.out.printf("Logout!!!!!!");
         homePage.logoutAction();
     }
+
+    /**
+     * 用户名错误
+     */
+    @Test(priority = 2, alwaysRun = true, groups = {"checklist-login"}, description = "Login-2:用户名错误提示信息验证")
+    public void loginWithWrongUsername() {
+        loginPage.idUserNameInput.clear();
+        loginPage.idUserNameInput.sendKeys("admin1");
+        loginPage.idPasswordInput.clear();
+        loginPage.idPasswordInput.sendKeys("123456");
+        loginPage.cssLoginBtn.click();
+        assert loginPage.cssAlertMes.getText().equals("账户或密码错误");
+    }
+
+    /**
+     * 密码错误
+     */
+    @Test(priority = 3, alwaysRun = true, groups = {"checklist-login"}, description = "Login-3:密码错误提示信息验证")
+    public void loginWithWrongPassword() {
+        driver.navigate().refresh();
+        loginPage.idUserNameInput.sendKeys("admin");
+        loginPage.idPasswordInput.sendKeys("12345");
+        loginPage.cssLoginBtn.click();
+        assert loginPage.cssAlertMes.getText().equals("账户或密码错误");
+    }
+
+    /**
+     * 用户名缺失
+     */
+    @Test(priority = 4, alwaysRun = true, groups = {"checklist-login"}, description = "Login-4:用户名缺失提示信息验证")
+    public void loginWithoutUsername() {
+        driver.navigate().refresh();
+        loginPage.idUserNameInput.sendKeys("");
+        loginPage.idPasswordInput.sendKeys("123456");
+        loginPage.cssLoginBtn.click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        assert loginPage.cssAlertKongUsername.getText().equals("请输入用户名!");
+    }
+
+    /**
+     * 用户名、密码均缺失
+     */
+    @Test(priority = 5, alwaysRun = true, groups = {"checklist-login"}, description = "Login-5:密码缺失提示信息验证")
+    public void loginWithoutPassword() {
+        driver.navigate().refresh();
+        loginPage.idUserNameInput.sendKeys("");
+        loginPage.idPasswordInput.sendKeys("");
+        loginPage.cssLoginBtn.click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        assert loginPage.cssAlertKongPassword.getText().equals("请输入密码！");
+    }
+
 }

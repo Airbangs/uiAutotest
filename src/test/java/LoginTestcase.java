@@ -34,7 +34,6 @@ public class LoginTestcase extends BaseTestcase {
         loginPage.idPasswordInput.sendKeys("123456");
         loginPage.cssLoginBtn.click();
         assert loginPage.nickname.getText().contains("您好，");
-        assert loginPage.nickname.getText().contains("ccui");
         Thread.sleep(1000);
         // 退出
         System.out.printf("Logout!!!!!!");
